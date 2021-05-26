@@ -8,5 +8,46 @@
     <body>
         <h1>Hi, picture of Django himself!</h1>
         <img src="{% static 'images/django.jpg' %}" alt="Oops! Picture didn't show up!">
+    
+        <div>
+            <h1>{{ top_title }}</h1>
+            <ul>
+            {% for e in all_accesses %}
+                <li>Topic: <em>{{e.name.topic}}</em> - {{e.name.name}}: <a href="{{e.name.url}}">{{e.name.url}}</a>, last accessed: {{e.date}}</li>
+            {% endfor %}
+            </ul>
+        </div>
+        <br>
+        <div>
+            <table>
+                <caption>Access information</caption>
+                <tr>
+                    <th>{{web_title}}</th>
+                    <th>{{acc_title}}</th>
+                </tr>
+                {% for w in all_accesses %}
+                <tr>
+                    <td>{{w.name}}</td>
+                    <td>{{w.date}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        <br>
+        <div>
+            <table>
+                <caption>Web page information</caption>
+                <tr>
+                    <th>{{web_title}}</th>
+                    <th>Link</th>
+                </tr>
+                {% for w in all_pages %}
+                <tr>
+                    <td>{{w.name}}</td>
+                    <td>{{w.url}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
     </body>
 </html>
